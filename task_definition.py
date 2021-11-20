@@ -55,8 +55,8 @@ tasks.append(task)
 
 # AMAZON to WEBCAM definition
 task = Task(
-    load_source=lambda pre_load_files, **kwargs: load_office(pre_load_files, 'amazon', **kwargs),
-    load_target=lambda pre_load_files, **kwargs: load_office(pre_load_files, 'webcam', **kwargs),
+    load_source=lambda pre_load_files, get_subset, **kwargs: load_office(pre_load_files, get_subset, 'amazon', **kwargs),
+    load_target=lambda pre_load_files, get_subset, **kwargs: load_office(pre_load_files, get_subset, 'webcam', **kwargs),
     feature_extractor=office.FeatureExtractor,
     classifier=office.Classifier,
     domain_regressor=office.DomainRegressor,

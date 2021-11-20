@@ -226,7 +226,8 @@ class Office(Dataset):
 
         # Get labels
         classes = sorted(os.listdir(dataset_dir))
-        self.labels = list(map(lambda img: classes.index(img.split('\\')[-2]),
+        # use // instead of \ for windows
+        self.labels = list(map(lambda img: classes.index(img.split('/')[-2]),
                                self.images))
 
         self.transform = transform

@@ -37,7 +37,7 @@ def load_mnist(pre_load_files=0, get_subset=1, **kwargs):
         total_idx = []
         for i in range(0, 10):
           idx = list(np.where((trainset.targets == i))[0])
-          random_idx = random.sample(idx, 100)
+          random_idx = random.sample(idx, int(5000/10))
           total_idx.append(random_idx)
         total_idx = list(itertools.chain.from_iterable(total_idx))
         trainset = data_utils.Subset(trainset, total_idx)
@@ -53,7 +53,7 @@ def load_mnist(pre_load_files=0, get_subset=1, **kwargs):
         total_idx = []
         for i in range(0, 10):
           idx = list(np.where((testset.targets == i))[0])
-          random_idx = random.sample(idx, 100)
+          random_idx = random.sample(idx, int(5000/10))
           total_idx.append(random_idx)
         total_idx = list(itertools.chain.from_iterable(total_idx))
         testset = data_utils.Subset(testset, total_idx)
@@ -86,7 +86,7 @@ def load_svhn(pre_load_files=0, get_subset=1, **kwargs):
         total_idx = []
         for i in range(0, 10):
           idx = list(np.where((trainset.labels == i))[0])
-          random_idx = random.sample(idx, 100)
+          random_idx = random.sample(idx, int(5000/10))
           total_idx.append(random_idx)
         total_idx = list(itertools.chain.from_iterable(total_idx))
         trainset = data_utils.Subset(trainset, total_idx)
@@ -102,7 +102,7 @@ def load_svhn(pre_load_files=0, get_subset=1, **kwargs):
         total_idx = []
         for i in range(0, 10):
           idx = list(np.where((testset.labels == i))[0])
-          random_idx = random.sample(idx, 100)
+          random_idx = random.sample(idx, int(5000/10))
           total_idx.append(random_idx)
         total_idx = list(itertools.chain.from_iterable(total_idx))
         testset = data_utils.Subset(testset, total_idx)

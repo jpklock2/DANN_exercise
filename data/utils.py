@@ -13,7 +13,7 @@ import random
 import itertools
 import numpy as np
 
-def load_mnist(pre_load_files=0, get_subset=1, **kwargs):
+def load_mnist(pre_load_files=0, get_subset=1, task=0, **kwargs):
     """Load MNIST dataloader, repeating along 3 channels.
 
     :**kwargs: arguments to pass to dataloader constructor
@@ -37,7 +37,10 @@ def load_mnist(pre_load_files=0, get_subset=1, **kwargs):
         total_idx = []
         for i in range(0, 10):
           idx = list(np.where((trainset.targets == i))[0])
-          random_idx = random.sample(idx, int(5000/10))
+          if task == 1:
+            random_idx = random.sample(idx, int(10000/10))
+          else:
+            random_idx = random.sample(idx, int(5000/10))
           total_idx.append(random_idx)
         total_idx = list(itertools.chain.from_iterable(total_idx))
         trainset = data_utils.Subset(trainset, total_idx)
@@ -53,7 +56,10 @@ def load_mnist(pre_load_files=0, get_subset=1, **kwargs):
         total_idx = []
         for i in range(0, 10):
           idx = list(np.where((testset.targets == i))[0])
-          random_idx = random.sample(idx, int(5000/10))
+          if task == 1:
+            random_idx = random.sample(idx, int(10000/10))
+          else:
+            random_idx = random.sample(idx, int(5000/10))
           total_idx.append(random_idx)
         total_idx = list(itertools.chain.from_iterable(total_idx))
         testset = data_utils.Subset(testset, total_idx)
@@ -62,7 +68,7 @@ def load_mnist(pre_load_files=0, get_subset=1, **kwargs):
         get_loader(testset, **kwargs)
 
 
-def load_svhn(pre_load_files=0, get_subset=1, **kwargs):
+def load_svhn(pre_load_files=0, get_subset=1, task=0, **kwargs):
     """Load SVHM dataloader.
 
     :**kwargs: arguments to pass to dataloader constructor
@@ -86,7 +92,10 @@ def load_svhn(pre_load_files=0, get_subset=1, **kwargs):
         total_idx = []
         for i in range(0, 10):
           idx = list(np.where((trainset.labels == i))[0])
-          random_idx = random.sample(idx, int(5000/10))
+          if task == 1:
+            random_idx = random.sample(idx, int(10000/10))
+          else:
+            random_idx = random.sample(idx, int(5000/10))
           total_idx.append(random_idx)
         total_idx = list(itertools.chain.from_iterable(total_idx))
         trainset = data_utils.Subset(trainset, total_idx)
@@ -102,7 +111,10 @@ def load_svhn(pre_load_files=0, get_subset=1, **kwargs):
         total_idx = []
         for i in range(0, 10):
           idx = list(np.where((testset.labels == i))[0])
-          random_idx = random.sample(idx, int(5000/10))
+          if task == 1:
+            random_idx = random.sample(idx, int(10000/10))
+          else:
+            random_idx = random.sample(idx, int(5000/10))
           total_idx.append(random_idx)
         total_idx = list(itertools.chain.from_iterable(total_idx))
         testset = data_utils.Subset(testset, total_idx)
@@ -111,7 +123,7 @@ def load_svhn(pre_load_files=0, get_subset=1, **kwargs):
         get_loader(testset, **kwargs)
 
 
-def load_synsigns(pre_load_files=0, get_subset=1, **kwargs):
+def load_synsigns(pre_load_files=0, get_subset=1, task=0, **kwargs):
     """Load SynSigns dataloader.
 
     :**kwargs: arguments to pass to dataloader constructor
@@ -139,7 +151,7 @@ def load_synsigns(pre_load_files=0, get_subset=1, **kwargs):
         get_loader(testset, **kwargs)
 
 
-def load_gtsrb(pre_load_files=0, get_subset=1, **kwargs):
+def load_gtsrb(pre_load_files=0, get_subset=1, task=0, **kwargs):
     """Load GTSRB dataloader.
 
     :**kwargs: arguments to pass to dataloader constructor
@@ -168,7 +180,7 @@ def load_gtsrb(pre_load_files=0, get_subset=1, **kwargs):
         get_loader(testset, **kwargs)
 
 
-def load_office(pre_load_files=0, get_subset=1, dataset='amazon', **kwargs):
+def load_office(pre_load_files=0, get_subset=1, task=0, dataset='amazon', **kwargs):
     """Load an Office Dataset.
 
     :dataset: TODO
@@ -204,7 +216,7 @@ def load_office(pre_load_files=0, get_subset=1, dataset='amazon', **kwargs):
     return get_loader(trainset, **kwargs), get_loader(testset, **kwargs)
 
 
-def load_mnist_m(pre_load_files=0, get_subset=1, **kwargs):
+def load_mnist_m(pre_load_files=0, get_subset=1, task=0, **kwargs):
     """Load MNIST_M dataloader.
 
     :**kwargs: arguments to pass to dataloader constructor
